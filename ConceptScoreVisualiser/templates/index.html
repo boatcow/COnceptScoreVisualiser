@@ -1,0 +1,63 @@
+{% extends "bootstrap/base.html" %}
+{% block content %}
+<style>
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+  color: #4CAF50;
+
+}
+</style>
+<div class="container">
+  <div class="jumbotron" style="background-color:black !important;">
+    <h1 style="color:#4CAF50">CONCEPT SCORE </h1>      
+    <h1 style="color:red">VISUALIZER </h1>      
+    
+<div class="panel-group">
+      <br><br><br><br><br>
+<!-- Main Input For Receiving Query to our ML -->	
+      	<form action="{{ url_for('predict')}}" method="POST" align="center">
+			<input type="text" name="hardness" placeholder="hardness">
+      <select name="question_type" type="text" placeholder="question_type">
+        <option value="mcq">mcq</option>
+        <option value="shuffle">shuffle</option>
+        <option value="output">output</option>
+        <option value="fill">fill</option>
+        <option value="snippet">snippet</option>
+      </select>
+      <input type="text" name="max_question_type_hardness" placeholder="max_question_type_hardness">
+      <input type="text" name="time_limit" placeholder="time_limit">
+      <input type="text" name="time_taken" placeholder="time_taken">
+      <select name="answer_status(c/w)" placeholder="answer_status">
+        <option value="Correct">Correct</option>
+        <option value="Wrong">Wrong</option>
+      </select>
+
+
+			<button type="submit" class="btn btn-primary">What am I?</button>
+			</form>
+
+<!-- Main Input For Receiving Query to our ML 
+
+gcloud builds --project test \
+    submit --tag gcr.io/test/flask-app:v1 .
+
+
+--> 
+
+
+
+  </div>
+            
+
+
+</div>
+
+
+{% endblock %}
+
+{% block styles %}
+{{super()}} <!-- Allows Javascripts and other styles to be inclusive in bootstrap -->
+<link rel="stylesheet"
+      href="{{url_for('.static', filename='css/styles.css')}}">
+{% endblock %}

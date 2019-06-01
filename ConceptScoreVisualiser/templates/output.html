@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>  
+<style>
+h1
+{
+  text-align: center;
+  text-transform: uppercase;
+  color: #4CAF50;
+
+}
+</style>
+<script>
+
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+  animationEnabled: true,
+  theme: "light2",
+  title:{
+    text: "Concept Score is modified by {{change}} units."
+
+  },
+  axisY:{
+    includeZero: false
+  },
+  data: [{        
+    type: "line",       
+    dataPoints: [
+      { y: 9 },
+      { y: 10 },
+      
+      { y: 10, indexLabel: "previous concept score",markerColor: "red", markerType: "triangle" },
+      { y: 10+{{change}} , indexLabel: "new value",markerColor: "DarkSlateGrey", markerType: "cross" },
+      
+    ]
+  }]
+});
+chart.render();
+
+}
+</script>
+</head>
+<body bgcolor="black">
+  <h1>{{formula}}</h1>
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+</html>

@@ -28,12 +28,12 @@ def predict():
 	'''
 
 	if request.method == 'POST':
-		hardness = int(request.form['hardness'])
+		hardness = float(request.form['hardness'])
 		question_type = request.form['question_type']
-		time_limit = int(request.form['time_limit'])
+		time_limit = float(request.form['time_limit'])
 		question_type_hardness = {"mcq": 1, "shuffle": 1, "output": 3, "fill": 5, "snippet": 5}
 		max_question_type_hardness = int(request.form['max_question_type_hardness'])
-		time_taken=int(request.form['time_taken'])
+		time_taken=float(request.form['time_taken'])
 		answer_status=request.form['answer_status(c/w)']
 
 	print("XXXXXXXXXXXXXXXXXX")
